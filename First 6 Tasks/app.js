@@ -42,6 +42,9 @@ function checkPassword() {
     return (error.innerHTML =
       'Password should greater than or equal to 8 character')
   }
+  if (password.value?.includes(' ')) {
+    return (error.innerHTML = 'Password Doesnot contain spaces')
+  }
 
   for (var i = 0; i < num.length; i++) {
     if (password?.value[0]?.includes(num[i])) {
@@ -64,19 +67,30 @@ function checkEmail(e) {
   e?.preventDefault()
   setTimeout(() => {
     Emailerror.innerHTML = ''
-  }, 6000)
+  }, 3000)
+
+  if (email?.value?.length === 0) {
+    return (Emailerror.innerHTML = 'Enter Email Address')
+  }
+
+  if (email.value?.includes(' ')) {
+    return (Emailerror.innerHTML = 'Email Doesnot contain spaces')
+  }
 
   if (!email.value.includes('@')) {
     return (Emailerror.innerHTML = 'Email must contain @')
   }
 
-  if (email.value.indexOf('.') - email.value.indexOf('@') < 0) {
-    return (Emailerror.innerHTML = ' (.) must be after @')
-  }
-
-  if (email.value.indexOf('.') - email.value.indexOf('@') < 3) {
+  if (
+    email.value.indexOf('.') - email.value.indexOf('@') < 3) {
     return (Emailerror.innerHTML = 'Invalid Email Address')
   }
+ 
+  if (email.value.indexOf('.') - email.value.indexOf('@') < 0) {
+    return (Emailerror.innerHTML = '(.) must be after @')
+  }
+
+  return (Emailerror.innerHTML = 'Email is Correct')
 }
 
 // // Task 5
@@ -109,5 +123,3 @@ function rollTheDice() {
   randomDiceValue.innerHTML = rollTheDice
   randomDiceValue2.innerHTML = rollTheDice2
 }
-
-
