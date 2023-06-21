@@ -177,14 +177,22 @@
 function num(a){
     //console.log(a)
     document.getElementById('answer').value += a
-
+    if (document.getElementById('answer').value?.split(a)?.at(1) === 0) {
+      alert("Math Error Occures")  
+    } 
 
 }
 
 
 function result(){
     var equation = document.getElementById('answer')
-    equation.value = eval(equation.value)
+    // 
+    if ( eval(equation.value) === Infinity && equation.value?.at(equation?.value?.length-1===0)) {
+        // alert("cannot be divided by Zero")
+        equation.value = "Number Can not Be divided by zero"
+    }else{
+        equation.value = eval(equation.value)
+    }
 }
 
 function clearAll() {
